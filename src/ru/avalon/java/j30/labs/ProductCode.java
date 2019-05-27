@@ -209,8 +209,7 @@ public class ProductCode {
      * @param connection действительное соединение с базой данных
      */
     public void save(Connection connection) throws SQLException {
-        PreparedStatement selectStatement = getSelectQuery(connection);
-        Collection<ProductCode> products = convert(selectStatement.executeQuery());
+        Collection<ProductCode> products = all(connection);
         PreparedStatement statement;
         if (products.contains(this)) {
             statement = getUpdateQuery(connection);
